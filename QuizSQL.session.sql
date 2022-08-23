@@ -158,13 +158,12 @@ group by O.status
 -- Answer 3
 -- select P.id as product_id, P.name as product_name, C.name as product_categories from products as P
 -- inner join categories as C on P.cat_id = C.id
-Answer 3 alternative
-select C.name as category, string_agg(P.id, ', ') as Id,
-    string_agg(P.name, ', ') as product_name from products as P
+-- Answer 3 alternative
+select C.name as category, string_agg(P.id, ', ') as Id, string_agg(P.name, ', ') as product_name from products as P
 inner join categories as C on P.cat_id = C.id
 group by C.name
 
-Answer 4
+-- Answer 4
 select O.id as order_id, add1 as address from delivery_addresses as DA
 inner join orders as O on DA.id = O.delivery_add_id
 
@@ -173,7 +172,7 @@ inner join orders as O on DA.id = O.delivery_add_id
 -- inner join order_items as OI on O.id = OI.order_id
 -- inner join products as P on OI.product_id = P.id
 -- order by O.id
-Answer 5 alternative
+-- Answer 5 alternative
 select O.id as order_id, string_agg(P.name, ', ') as product_name from orders as O 
 inner join order_items as OI on O.id = OI.order_id
 inner join products as P on OI.product_id = P.id
